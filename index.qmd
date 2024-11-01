@@ -1,45 +1,86 @@
 ---
-title: "Quarto Presentations"
-subtitle: "Create beautiful interactive slide decks with Reveal.js"
+title: "Ripe Sensei"
+subtitle: "Team Members: Melody Wong, Dylan Chua, Heng Kuan Xin, Denzel Loy"
 format:
   revealjs: 
-    slide-number: true
+    theme: default
+    menu:
+      side: right
+      width: normal
+    slide-number: c/t
     chalkboard: 
-      buttons: false
-    preview-links: auto
-    logo: images/quarto.png
+      buttons: true
+    preview-links: true
+    # logo: images/quarto.png
     css: styles.css
-    footer: <https://quarto.org>
+    footer: <https://github.com/DylanChua2001/RipeSensei>
 resources:
   - demo.pdf
 ---
 
-## Hello, There
+## Table of Contents
 
-This presentation will show you examples of what you can do with Quarto and [Reveal.js](https://revealjs.com), including:
-
--   Presenting code and LaTeX equations
--   Including computations in slide output
--   Image, video, and iframe backgrounds
--   Fancy transitions and animations
--   Printing to PDF
+-   Project Introduction
+-   Architecture
+-   Plan & Progress Status
+-   System Requirements
+-   Implementation
+-   Demo
 
 ...and much more
+
+## Introduction
+
+hi
 
 ## Pretty Code {auto-animate="true"}
 
 -   Over 20 syntax highlighting themes available
 -   Default theme optimized for accessibility
 
-``` r
-# Define a server for the Shiny app
-function(input, output) {
-  
-  # Fill in the spot we created for a plot
-  output$phonePlot <- renderPlot({
-    # Render a barplot
-  })
-}
+``` python
+import time
+import busio
+import digitalio
+import board
+import RPi.GPIO as GPIO
+import adafruit_mcp3xxx.mcp3008 as MCP
+from adafruit_mcp3xxx.analog_in import AnalogIn
+
+# Constants for MQ2
+SPI_CLOCK_PIN = board.SCK
+SPI_MISO_PIN = board.MISO
+SPI_MOSI_PIN = board.MOSI
+CHIP_SELECT_PIN = board.D8 # CE0
+ADC_CHANNEL = MCP.P0 # ADC analog channel 0
+GAS_THRESHOLD = 300
+
+# Setup SPI bus and MCP3008
+spi_bus = busio.SPI(clock=SPI_CLOCK_PIN, MISO=SPI_MISO_PIN, MOSI=SPI_MOSI_PIN)
+chip_select = digitalio.DigitalInOut(CHIP_SELECT_PIN)
+mcp = MCP.MCP3008(spi_bus, chip_select)
+chan = AnalogIn(mcp, ADC_CHANNEL)
+
+def read_mq2():
+    while True:
+        try:
+            while True:
+                try:
+                    analog_value = chan.value
+                    voltage = chan.voltage
+                    gas_detected = "Gas Detected!" if analog_value > GAS_THRESHOLD else "No Gas Detected"
+                    print(f"MQ2 - Analog Value: {analog_value}, Voltage: {voltage:.2f}V, Status: {gas_detected}")
+                    time.sleep(1)
+                except Exception as e:
+                    print(f"An error occurred: {e}")
+        except KeyboardInterrupt:
+            print("Process interrupted by user.")
+        finally:
+            GPIO.cleanup()
+            print("Cleaned up GPIO resources.")
+
+if __name__ == "__main__":
+    read_mq2()
 ```
 
 ::: footer
