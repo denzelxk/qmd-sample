@@ -358,11 +358,22 @@
 </section>
 <section id="business-needs" class="slide level2">
 <h2>Business Needs</h2>
-<p>Description how your solution meets key stakeholders’ needs</p>
+<p>RipeSensei meets the key stakeholders’ needs in the following ways:</p>
+<ul>
+<li>For supermarkets: RipeSensei helps reduce food waste, optimize inventory management, and improve customer satisfaction by providing fresh produce.</li>
+<li>For consumers: RipeSensei ensures that the produce they buy is fresh and of good quality, reducing the likelihood of spoilage and foodborne illnesses.</li>
+<li>For farmers and suppliers: RipeSensei helps reduce the economic losses associated with food waste and spoilage, and provides valuable insights on how to improve their produce’s shelf life.</li>
+</ul>
 </section>
 <section id="project-scope" class="slide level2">
 <h2>Project Scope</h2>
-<p>Breakdown of project scope and components</p>
+<p>The project scope includes the following components:</p>
+<ul>
+<li>Hardware development: Design and development of the gas sensor module, camera module, and temperature and humidity sensor module.</li>
+<li>Software development: Development of the machine learning algorithm to predict the stage of food ripening, and the user interface for data visualization and analysis.</li>
+<li>Integration: Integration of the hardware and software components to create a functional system.</li>
+<li>Testing and validation: Testing and validation of the system to ensure its accuracy and reliability.</li>
+</ul>
 </section></section>
 <section>
 <section id="architecture" class="title-slide slide level1 center">
@@ -371,7 +382,13 @@
 </section>
 <section id="general-architecture" class="slide level2">
 <h2>General Architecture</h2>
-<p>high-level architecture of solution</p>
+<p>The high-level architecture of the solution is as follows:</p>
+<ul>
+<li>The gas sensor module, camera module, and temperature and humidity sensor module collect data on the food’s ripening stage.</li>
+<li>The data is transmitted to the Raspberry Pi 4B, which uploads it to MQTT online.</li>
+<li>Image data is put through a machine learning algorithm via TensorFlow</li>
+<li>The processed data is then transmitted to the user interface, where it is visualised and analysed.</li>
+</ul>
 </section>
 <section id="components-actuators-sensors" class="slide level2">
 <h2>Components, Actuators, Sensors</h2>
@@ -411,6 +428,10 @@
 <td>MCP3008</td>
 <td>Analogue to Digital Converter</td>
 </tr>
+<tr class="odd">
+<td>RPi Camera Module</td>
+<td>Captures images of food to suplement gas sensors data</td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -447,6 +468,11 @@
 <section id="plan-status" class="slide level2">
 <h2>Plan &amp; Status</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Completed Task</th>
@@ -456,9 +482,29 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td>Task</td>
+<td>Sensor Acquisition &amp; Testing</td>
 <td>Description</td>
-<td>Status</td>
+<td>Completed</td>
+</tr>
+<tr class="even">
+<td>Data Transmission &amp; Storage</td>
+<td>Description</td>
+<td>Completed</td>
+</tr>
+<tr class="odd">
+<td>Image Processing</td>
+<td>Computer Vision</td>
+<td>In progress</td>
+</tr>
+<tr class="even">
+<td>Systems Integration</td>
+<td>Creating dashboard with all inputs</td>
+<td>In progress</td>
+</tr>
+<tr class="odd">
+<td>Testing &amp; Validation</td>
+<td>Description</td>
+<td>Not started</td>
 </tr>
 </tbody>
 </table>
@@ -471,6 +517,10 @@
 <section id="system-requirements-1" class="slide level2">
 <h2>System Requirements</h2>
 <table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>S/N</th>
@@ -480,11 +530,19 @@
 <tbody>
 <tr class="odd">
 <td>1</td>
-<td>Insert requirements of use case</td>
+<td>The system should be able to provide real-time image on the food</td>
 </tr>
 <tr class="even">
 <td>2</td>
-<td>Insert requirements of use case</td>
+<td>The system should be able to provide real-time sensor data on gasses emitted</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>The system should be able to detect food spoilage with accuracy of 80%</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>The system should be able to provide alerts</td>
 </tr>
 </tbody>
 </table>
@@ -530,10 +588,7 @@
 </section>
 <section id="workflow" class="slide level2">
 <h2>Workflow</h2>
-<p>User Journey / Flow of Solution (show as flowchart)</p>
-</section>
-<section id="screenshots" class="slide level2">
-<h2>Screenshots</h2>
+<p>User Journey / Flow of Solution (show as flowchart) ## Screenshots</p>
 </section></section>
 <section id="prototype-demo" class="title-slide slide level1 center">
 <h1>Prototype Demo</h1>
