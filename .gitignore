@@ -49,3 +49,6 @@ po/*~
 rsconnect/
 
 /.quarto/
+_output/.DS_Store
+_output/index_files/.DS_Store
+_output/index_files/libs/.DS_Store
